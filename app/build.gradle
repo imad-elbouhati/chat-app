@@ -8,12 +8,20 @@ androidExtensions {
     experimental = true
 }
 android {
+    if(project.hasProperty('devBuild')){
+        splits.abi.enable = false
+        splits.density.enable = false
+        aaptOptions.cruncherEnabled = false
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    }
+android {
+
     defaultConfig {
         applicationId "com.example.messenger"
-        minSdkVersion 21
+        minSdkVersion 29
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
